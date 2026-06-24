@@ -19,3 +19,8 @@ To efficiently generate the dataset, I built an automated Python pipeline using 
 ## Repository Contents
 * `generar_dataset.py`: The Python script used to automate the generation of prompts and initial baseline evaluations.
 * `dataset_evaluacion.csv`: The final dataset containing 50 evaluated interactions, complete with identified flaws and human-refined justifications.
+
+## Future Roadmap
+* **Execution Time Tracking**: Implementing detailed latency tracking to monitor model response times in production.
+* **Token Cost Calculation**: Integrating token usage metrics to accurately forecast and monitor API execution costs.
+* **Multimodal Evaluation**: Expanding the framework to audit visual consistency and "Visual DNA" compliance in generated imagery.

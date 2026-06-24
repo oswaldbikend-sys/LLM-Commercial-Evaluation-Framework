@@ -42,10 +42,19 @@ with open(csv_file, mode='w', newline='', encoding='utf-8') as file:
             try:
                 # Instruimos los tonos para cada modelo al generar las respuestas
                 prompt_a = f"Responde a esta instrucción en un tono muy corporativo y estricto:\n\n{user_prompt}"
-                res_a = model_a.generate_content(prompt_a).text.strip()
+                start_a = time.time()
+                resp_a = model_a.generate_content(prompt_a)
+                end_a = time.time()
+                res_a = resp_a.text.strip()
 
                 prompt_b = f"Responde a esta instrucción en un tono más empático y flexible:\n\n{user_prompt}"
-                res_b = model_b.generate_content(prompt_b).text.strip()
+                start_b = time.time()
+                resp_b = model_b.generate_content(prompt_b)
+                end_b = time.time()
+                res_b = resp_b.text.strip()
+
+                print(f"   ⏱️ Model A: {end_a - start_a:.2f}s | 🪙 Tokens: {resp_a.usage_metadata.total_token_count}")
+                print(f"   ⏱️ Model B: {end_b - start_b:.2f}s | 🪙 Tokens: {resp_b.usage_metadata.total_token_count}")
 
                 prompt_juez = f"""
                 Actúa como un auditor experto en control de calidad de Inteligencia Artificial (RLHF).
